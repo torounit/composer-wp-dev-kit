@@ -23,7 +23,7 @@ define( 'DB_HOST', $db_data['host'] );
 /** The Database Collate type. Don't change this if in doubt. */
 define( 'DB_COLLATE', '' );
 
-require_once dirname( __FILE__ ) .'salt.php';
+require_once dirname( __FILE__ ) .'/salt.php';
 
 $table_prefix = 'wp_';
 
