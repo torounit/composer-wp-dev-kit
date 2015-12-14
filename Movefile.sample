@@ -1,0 +1,40 @@
+local:
+  vhost: "http://127.0.0.1:8080"
+  wordpress_path: "./www"
+
+  database:
+    name: "wpdevelopment"
+    user: "root"
+    password: ""
+    host: "localhost"
+
+staging:
+  vhost: "http://example.com"
+  wordpress_path: "/var/www/vhosts/example.com" # use an absolute path here
+
+  database:
+    name: "dbname"
+    user: "dbuser"
+    password: "dbpass"
+    host: "localhost"
+    charset: "utf8"
+
+  exclude:
+    - ".git/"
+    - ".gitignore"
+    - ".sass-cache/"
+    - "node_modules/"
+    - "bin/"
+    - "tmp/*"
+    - "Gemfile*"
+    - "Movefile"
+    - "wp-config.php"
+    - "wp-content/*.sql"
+
+  ssh:
+    host: "example.com"
+    user: "ec2-user"
+    port: 22 # Port is optional
+    rsync_options: "--verbose"
+
+
