@@ -7,9 +7,9 @@
         }
     ],
     "require": {
+        "php": ">=5.4.2",
         "johnpbloch/wordpress": "4.4",
-        "wpackagist-theme/habakiri": "2.4.0",
-        "wpackagist-plugin/smart-custom-fields": "*",
+        "wpackagist-plugin/hello-kushimoto": "*",
         "wpackagist-plugin/simple-post-type-permalinks": "*"
     },
 
@@ -30,5 +30,10 @@
     "config": {
         "vendor-dir": "www/vendor"
     },
-    "scripts": {}
+    "scripts": {
+        "pre-package-install": [
+            "echo '<?php ' > salt.php",
+            "curl https://api.wordpress.org/secret-key/1.1/salt/ >> salt.php"
+        ]
+    }
 }

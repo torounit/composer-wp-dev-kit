@@ -9,22 +9,16 @@ WordPress Environment for PHP Built-in Server.
 ```
 $ brew install mysql jq composer wp-cli
 ```
-#### 2. Clone Repo.
+#### 2. Create Project
 
 ```
-$ git clone git@github.com:torounit/composer-wp.git
+$ composer create-project torounit/composer-wp path/to/project
 ```
 
-### 3. Setup Composer.
+### 3. Start Development!
 
 ```
-$ composer install
-$ bin/bootstrap.sh
-```
-
-### 4. Start Development!
-
-```
+$ cd path/to/project
 $ bin/bootstrap.sh
 ```
 
