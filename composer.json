@@ -1,0 +1,27 @@
+{
+    "name": "torounit/composer-wp",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "http://wpackagist.org"
+        }
+    ],
+    "require": {
+        "johnpbloch/wordpress": "4.4",
+        "wpackagist-theme/habakiri": "2.4.0",
+        "wpackagist-plugin/smart-custom-fields": "*",
+        "wpackagist-plugin/simple-post-type-permalinks": "*"
+    },
+
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Hiroshi Urabe",
+            "email": "mail@torounit.com"
+        }
+    ],
+    "extra": {
+        "wordpress-install-dir": "wp"
+    },
+    "scripts": {}
+}
