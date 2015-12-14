@@ -32,18 +32,10 @@ define( 'SECURE_AUTH_SALT', 'FJ*A/1o&[#yTCMj&xFexN8cx|xjDV+4RJd-J;p_KNFo/g>+r+Ox
 define( 'LOGGED_IN_SALT', 'AdiyXH8b?A^ZFZ#72w2Z%GC+Qw+.|tY-k5}qUMEPuD+%/1|8bwid+6Q9Ge>ocxJ#' );
 define( 'NONCE_SALT', 'gbVg(S9cUw>Y>|{)YN)ilU]8FCS4De9e+kcV]eJGA-l{Xx.& S>`K|x$G8W9h|(4' );
 
-
 $table_prefix = 'wp_';
-
 
 define( 'JETPACK_DEV_DEBUG', true );
 define( 'WP_DEBUG', true );
-
-define( 'WP_HOME', 'http://127.0.0.1:' . $env_config['server']['port'] );
-define( 'WP_SITEURL', WP_HOME . '/wp' );
-define( 'WP_CONTENT_DIR', dirname( __FILE__ ) . '/wp-content' );
-define( 'WP_CONTENT_URL', WP_HOME . '/wp-content' );
-define ('WPLANG', 'ja_JP');
 
 
 /* That's all, stop editing! Happy blogging. */

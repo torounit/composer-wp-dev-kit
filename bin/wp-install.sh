@@ -20,8 +20,8 @@ else
 fi
 
 WP_DESC="Hello World!"
-DOC_ROOT=$(pwd)
-WP_PATH=$(pwd)/wp
+DOC_ROOT=$(pwd)/www
+WP_PATH=$(pwd)/www
 
 if $(bin/wp core is-installed); then
     open http://127.0.0.1:$PORT
@@ -31,12 +31,11 @@ fi
 
 if ! bin/wp --info ; then
     curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli-nightly.phar
-    rm -fr bin && mkdir bin
     mv wp-cli-nightly.phar bin/wp
     chmod 755 bin/wp
 fi
 
-echo "path: wp" > $(pwd)/wp-cli.yml
+echo "path: www" > $(pwd)/wp-cli.yml
 
 if [ $DB_PASS ]; then
     echo "DROP DATABASE IF EXISTS $DB_NAME;" | mysql -u$DB_USER -p$DB_PASS

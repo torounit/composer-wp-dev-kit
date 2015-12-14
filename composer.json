@@ -21,7 +21,11 @@
         }
     ],
     "extra": {
-        "wordpress-install-dir": "wp"
+        "wordpress-install-dir": "www",
+        "installer-paths": {
+            "www/wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
+            "www/wp-content/themes/{$name}/": ["type:wordpress-theme"]
+        }
     },
     "scripts": {}
 }
