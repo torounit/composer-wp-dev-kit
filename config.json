@@ -10,6 +10,7 @@
   },
   "wp": {
     "title": "Welcome to the Composer",
-    "description": "Hello World!"
+    "description": "Hello World!",
+    "lang": "ja"
   }
 }

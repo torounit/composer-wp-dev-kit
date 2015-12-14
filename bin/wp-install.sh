@@ -13,7 +13,7 @@ if [ -f "$(pwd)/config.json" ]; then
     PORT=$(cat $(pwd)/config.json | jq -r ".server.port")
 
     WP_TITLE=$(cat $(pwd)/config.json | jq -r ".wp.title")
-
+    WP_LANG=$(cat $(pwd)/config.json | jq -r ".wp.lang")
 else
     echo "config.json is NOT a file."
     exit 0
@@ -57,6 +57,10 @@ bin/wp rewrite structure "/archives/%post_id%"
 
 bin/wp option update blogname "$WP_TITLE"
 bin/wp option update blogdescription "$WP_DESC"
+
+if [ $WP_LANG ]; then
+bin/wp core language install $WP_LANG --activate
+fi
 
 if [ -e "provision-post.sh" ]; then
     bash provision-post.sh

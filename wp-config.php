@@ -43,6 +43,7 @@ define( 'WP_HOME', 'http://127.0.0.1:' . $env_config['server']['port'] );
 define( 'WP_SITEURL', WP_HOME . '/wp' );
 define( 'WP_CONTENT_DIR', dirname( __FILE__ ) . '/wp-content' );
 define( 'WP_CONTENT_URL', WP_HOME . '/wp-content' );
+define ('WPLANG', 'ja_JP');
 
 
 /* That's all, stop editing! Happy blogging. */
