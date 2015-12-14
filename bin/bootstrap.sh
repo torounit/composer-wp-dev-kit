@@ -23,16 +23,10 @@ WP_DESC="Hello World!"
 DOC_ROOT=$(pwd)/www
 WP_PATH=$(pwd)/www
 
-if $(bin/wp core is-installed); then
+if $(www/vendor/wp-cli/wp-cli/bin/wp core is-installed); then
     open http://127.0.0.1:$PORT
-    bin/wp server --host=0.0.0.0 --port=$PORT --docroot=$DOC_ROOT
+    www/vendor/wp-cli/wp-cli/bin/wp server --host=0.0.0.0 --port=$PORT --docroot=$DOC_ROOT
     exit 0
-fi
-
-if ! bin/wp --info ; then
-    curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli-nightly.phar
-    mv wp-cli-nightly.phar bin/wp
-    chmod 755 bin/wp
 fi
 
 echo "path: www" > $(pwd)/wp-cli.yml
@@ -45,27 +39,27 @@ else
     echo "CREATE DATABASE $DB_NAME DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;" | mysql -u$DB_USER
 fi
 
-bin/wp core install \
+www/vendor/wp-cli/wp-cli/bin/wp core install \
 --url=http://127.0.0.1:$PORT \
 --title="WordPress" \
 --admin_user="admin" \
 --admin_password="admin" \
 --admin_email="admin@example.com"
 
-bin/wp rewrite structure "/archives/%post_id%"
+www/vendor/wp-cli/wp-cli/bin/wp rewrite structure "/archives/%post_id%"
 
-bin/wp option update blogname "$WP_TITLE"
-bin/wp option update blogdescription "$WP_DESC"
+www/vendor/wp-cli/wp-cli/bin/wp option update blogname "$WP_TITLE"
+www/vendor/wp-cli/wp-cli/bin/wp option update blogdescription "$WP_DESC"
 
 if [ $WP_LANG ]; then
-bin/wp core language install $WP_LANG --activate
+www/vendor/wp-cli/wp-cli/bin/wp core language install $WP_LANG --activate
 fi
 
-bin/wp plugin activate --all
+www/vendor/wp-cli/wp-cli/bin/wp plugin activate --all
 
 if [ -e "provision-post.sh" ]; then
     bash provision-post.sh
 fi
 
 open http://127.0.0.1:$PORT
-bin/wp server --host=0.0.0.0 --port=$PORT --docroot=$DOC_ROOT
+www/vendor/wp-cli/wp-cli/bin/wp server --host=0.0.0.0 --port=$PORT --docroot=$DOC_ROOT
