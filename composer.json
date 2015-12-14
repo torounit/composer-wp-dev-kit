@@ -11,6 +11,8 @@
         "wp-cli/wp-cli" : "~0.21",
         "psy/psysh" : "~0.6",
         "johnpbloch/wordpress": "4.4",
+        "wpackagist-plugin/jetpack": "*",
+        "wpackagist-plugin/wordpress-importer": "*",
         "wpackagist-plugin/hello-kushimoto": "*",
         "wpackagist-plugin/simple-post-type-permalinks": "*"
     },
@@ -30,7 +32,6 @@
         }
     },
     "config": {
-        "vendor-dir": "www/vendor"
     },
     "scripts": {
         "pre-package-install": [
