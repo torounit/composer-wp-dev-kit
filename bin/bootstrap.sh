@@ -29,8 +29,6 @@ if $(www/vendor/wp-cli/wp-cli/bin/wp core is-installed); then
     exit 0
 fi
 
-echo "path: www" > $(pwd)/wp-cli.yml
-
 if [ $DB_PASS ]; then
     echo "DROP DATABASE IF EXISTS $DB_NAME;" | mysql -u$DB_USER -p$DB_PASS
     echo "CREATE DATABASE $DB_NAME DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;" | mysql -u$DB_USER -p$DB_PASS
