@@ -1,17 +1,12 @@
 <?php
 
-// ** MySQL settings - You can get this info from your web host ** //
-$db_data = false;
 
-function load_config() {
-	if ( file_exists( dirname( __FILE__ ) . '/config.json' ) ) {
-		$config = json_decode( file_get_contents( dirname( __FILE__ ) . '/config.json' ), true );
-
-		return $config['mysql'];
-	}
+if ( ! file_exists( dirname( __FILE__ ) . '/config.json' ) ) {
+	wp_die( "Config.json is Not Exsist!" );
 }
 
-$db_data = load_config();
+$env_config = json_decode( file_get_contents( dirname( __FILE__ ) . '/config.json' ), true );
+$db_data    = $env_config['mysql'];
 
 /** The name of the database for WordPress */
 define( 'DB_NAME', $db_data['database'] );
@@ -43,10 +38,11 @@ $table_prefix = 'wp_';
 
 define( 'JETPACK_DEV_DEBUG', true );
 define( 'WP_DEBUG', true );
-define( 'WP_SITEURL', 'http://127.0.0.1:8080/wp');
-define( 'WP_HOME', 'http://127.0.0.1:8080');
+
+define( 'WP_HOME', 'http://127.0.0.1:' . $env_config['server']['port'] );
+define( 'WP_SITEURL', WP_HOME . '/wp' );
 define( 'WP_CONTENT_DIR', dirname( __FILE__ ) . '/wp-content' );
-define( 'WP_CONTENT_URL', 'http://127.0.0.1:8080/wp-content' );
+define( 'WP_CONTENT_URL', WP_HOME . '/wp-content' );
 
 
 /* That's all, stop editing! Happy blogging. */

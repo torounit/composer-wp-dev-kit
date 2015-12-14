@@ -10,6 +10,8 @@ if [ -f "$(pwd)/config.json" ]; then
     DB_NAME=$(cat $(pwd)/config.json | jq -r ".mysql.database")
     DB_HOST=$(cat $(pwd)/config.json | jq -r ".mysql.host")
 
+    PORT=$(cat $(pwd)/config.json | jq -r ".server.port")
+
     WP_TITLE=$(cat $(pwd)/config.json | jq -r ".wp.title")
 
 else
@@ -18,7 +20,6 @@ else
 fi
 
 WP_DESC="Hello World!"
-PORT=8080
 DOC_ROOT=$(pwd)
 WP_PATH=$(pwd)/wp
 
