@@ -61,6 +61,8 @@ if [ $WP_LANG ]; then
 bin/wp core language install $WP_LANG --activate
 fi
 
+bin/wp plugin activate --all
+
 if [ -e "provision-post.sh" ]; then
     bash provision-post.sh
 fi
