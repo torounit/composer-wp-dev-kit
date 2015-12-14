@@ -27,5 +27,8 @@
             "www/wp-content/themes/{$name}/": ["type:wordpress-theme"]
         }
     },
+    "config": {
+        "vendor-dir": "www/vendor"
+    },
     "scripts": {}
 }
