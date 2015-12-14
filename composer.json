@@ -15,7 +15,7 @@
         "wpackagist-plugin/simple-post-type-permalinks": "*"
     },
 
-    "license": "GPL",
+    "license": "GPL-2.0+",
     "authors": [
         {
             "name": "Hiroshi Urabe",
