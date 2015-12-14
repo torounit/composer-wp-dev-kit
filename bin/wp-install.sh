@@ -4,14 +4,23 @@ set -ex;
 
 mysql.server start
 
-DB_USER=${1-root}
-DB_PASS=$2
-DB_NAME=${3-wpdev}
+if [ -f "$(pwd)/config.json" ]; then
+    DB_USER=$(cat $(pwd)/config.json | jq -r ".mysql.username")
+    DB_PASS=$(cat $(pwd)/config.json | jq -r ".mysql.password")
+    DB_NAME=$(cat $(pwd)/config.json | jq -r ".mysql.database")
+    DB_HOST=$(cat $(pwd)/config.json | jq -r ".mysql.host")
+
+    WP_TITLE=$(cat $(pwd)/config.json | jq -r ".wp.title")
+
+else
+    echo "config.json is NOT a file."
+    exit 0
+fi
+
+WP_DESC="Hello World!"
 PORT=8080
 DOC_ROOT=$(pwd)
 WP_PATH=$(pwd)/wp
-WP_TITLE='Welcome to the WordPress'
-WP_DESC='Hello World!'
 
 if $(bin/wp core is-installed); then
     open http://127.0.0.1:$PORT

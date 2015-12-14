@@ -1,0 +1,12 @@
+{
+  "mysql": {
+    "database": "wpdevelopment",
+    "username": "root",
+    "password": "",
+    "host": "localhost"
+  },
+  "wp": {
+    "title": "Welcome to the Composer",
+    "description": "Hello World!"
+  }
+}
