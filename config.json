@@ -1,4 +1,7 @@
 {
+  "server": {
+    "port": "8080"
+  },
   "mysql": {
     "database": "wpdevelopment",
     "username": "root",
@@ -6,9 +9,6 @@
     "host": "localhost"
   },
   "table_prefix": "wp_",
-  "server": {
-    "port": "8080"
-  },
   "wp": {
     "title": "Welcome to the Composer",
     "description": "Hello World!",

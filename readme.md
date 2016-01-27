@@ -24,17 +24,19 @@ $ composer create-project torounit/composer-wp path/to/project
 
 ```
 $ cd path/to/project
+$ atom config.json
 $ composer server
 ```
 
 `composer server` create database and install WordPress if is not installed.
 If installed, Start Server Only.
 
-## Directory
+## Directory & Files.
 
 + `www` Document root.
 + `www/wp-content` Custom wp-content.
 + `www/wp-content/mu-plugins/vendor` for composer library.
++ `config.json` setting your environment.
 
 ## For Deploy
 

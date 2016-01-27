@@ -8,3 +8,4 @@ www/wp-content/upgrade
 www/wp-content/uploads
 www/wp-content/themes
 www/wp-content/plugins
+www/wp-content/mu-plugins/autoload.php
