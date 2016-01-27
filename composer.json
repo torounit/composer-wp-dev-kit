@@ -38,6 +38,10 @@
             "echo '<?php ' > www/salt.php",
             "curl https://api.wordpress.org/secret-key/1.1/salt/ >> www/salt.php"
         ],
+
+        "post-install-cmd": [
+            "echo '<?php require_once \"vendor/autoload.php\";' >> www/wp-content/mu-plugins/autoload.php"
+        ],
         "server": [
           "bash ./bin/provision.sh"
         ]
