@@ -24,7 +24,7 @@ define( 'DB_COLLATE', '' );
 
 require_once dirname( __FILE__ ) .'/salt.php';
 
-$table_prefix = 'wp_';
+$table_prefix = $env_config['table_prefix'];
 
 define( 'WP_HOME', 'http://127.0.0.1:'. $env_config['server']['port'] );
 define( 'WP_SITEURL', 'http://127.0.0.1:'. $env_config['server']['port'] .'/wp' );

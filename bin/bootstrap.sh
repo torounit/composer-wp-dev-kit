@@ -22,7 +22,7 @@ if [ -f "$CONFIG_PATH" ]; then
     WP_TITLE=$(cat $CONFIG_PATH | jq -r ".wp.title")
     WP_DESCRIPTION=$(cat $CONFIG_PATH | jq -r ".wp.description")
     WP_LANG=$(cat $CONFIG_PATH | jq -r ".wp.lang")
-    WP_TIMEZONE_STRING=$(cat $CONFIG_PATH | jq -r ".wp.timezone_string")
+    WP_GMT_OFFSET=$(cat $CONFIG_PATH | jq -r ".wp.gmt_offset")
     WP_REWRITE_STRUCTURE=$(cat $CONFIG_PATH | jq -r ".wp.rewrute_structure")
 
     WP_ADMIN_USER=$(cat $CONFIG_PATH | jq -r ".wp.admin.user")
@@ -39,7 +39,7 @@ fi
 ## Start Server if installed.
 if ! $($WP_CLI core is-installed) || ! $($WP_CLI core is-installed); then
 
-    ## DB WordPress.
+    ## Recreate DB for WordPress.
     if [ $DB_PASS ]; then
         echo "DROP DATABASE IF EXISTS $DB_NAME;" | mysql -u$DB_USER -p$DB_PASS
         echo "CREATE DATABASE $DB_NAME DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;" | mysql -u$DB_USER -p$DB_PASS
@@ -48,7 +48,7 @@ if ! $($WP_CLI core is-installed) || ! $($WP_CLI core is-installed); then
         echo "CREATE DATABASE $DB_NAME DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;" | mysql -u$DB_USER
     fi
 
-    ## Create WordPress.
+    ## Install WordPress.
     $WP_CLI core install \
     --url=http://127.0.0.1:$PORT \
     --path=www/wp \
@@ -57,14 +57,15 @@ if ! $($WP_CLI core is-installed) || ! $($WP_CLI core is-installed); then
     --admin_password="$WP_ADMIN_PASSWORD" \
     --admin_email="$WP_ADMIN_EMAIL"
 
+    ## Setup Options.
     $WP_CLI option update blogname "$WP_TITLE"
 
     if [ $WP_DESCRIPTION ]; then
         $WP_CLI option update blogdescription "$WP_DESCRIPTION"
     fi
 
-    if [ $WP_TIMEZONE_STRING ]; then
-        $WP_CLI option update timezone_string "$WP_TIMEZONE_STRING"
+    if [ $WP_GMT_OFFSET ]; then
+        $WP_CLI option update gmt_offset "$WP_GMT_OFFSET"
     fi
 
     if [ $WP_LANG ]; then
@@ -76,12 +77,15 @@ if ! $($WP_CLI core is-installed) || ! $($WP_CLI core is-installed); then
         $WP_CLI rewrite structure "$WP_REWRITE_STRUCTURE"
     fi
 
+    # Activate Theme.
     if [ $WP_THEME ]; then
         $WP_CLI theme activate "$WP_THEME"
     fi
 
-    wp plugin activate --all
+    # Activate Plugins.
+    $WP_CLI plugin activate --all
 
+    # For Post Script.
     if [ -e "provision-post.sh" ]; then
         bash provision-post.sh
     fi
