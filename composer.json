@@ -11,6 +11,7 @@
         "wp-cli/wp-cli" : "~0.21",
         "psy/psysh" : "~0.6",
         "johnpbloch/wordpress": "4.4",
+        "wpackagist-theme/habakiri": "*",
         "wpackagist-plugin/jetpack": "*",
         "wpackagist-plugin/hello-kushimoto": "*",
         "wpackagist-plugin/simple-post-type-permalinks": "*"

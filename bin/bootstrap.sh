@@ -20,9 +20,12 @@ if [ -f "$(pwd)/config.json" ]; then
     WP_LANG=$(cat $(pwd)/config.json | jq -r ".wp.lang")
     WP_TIMEZONE_STRING=$(cat $(pwd)/config.json | jq -r ".wp.timezone_string")
     WP_REWRITE_STRUCTURE=$(cat $(pwd)/config.json | jq -r ".wp.rewrute_structure")
+
     WP_ADMIN_USER=$(cat $(pwd)/config.json | jq -r ".wp.admin.user")
     WP_ADMIN_PASSWORD=$(cat $(pwd)/config.json | jq -r ".wp.admin.password")
     WP_ADMIN_EMAIL=$(cat $(pwd)/config.json | jq -r ".wp.admin.email")
+
+    WP_THEME=$(cat $(pwd)/config.json | jq -r ".wp.theme")
 
 else
     echo "config.json is NOT a file."
@@ -65,6 +68,10 @@ if ! $(vendor/wp-cli/wp-cli/bin/wp core is-installed); then
 
     if [ $WP_REWRITE_STRUCTURE ]; then
         vendor/wp-cli/wp-cli/bin/wp rewrite structure "$WP_REWRITE_STRUCTURE"
+    fi
+
+    if [ $WP_THEME ]; then
+        vendor/wp-cli/wp-cli/bin/wp theme activate "$WP_THEME"
     fi
 
     vendor/wp-cli/wp-cli/bin/wp plugin activate --all
