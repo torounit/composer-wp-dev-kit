@@ -40,10 +40,7 @@
         ],
 
         "post-install-cmd": [
-            "echo '<?php require_once \"vendor/autoload.php\";' >> www/wp-content/mu-plugins/autoload.php"
-        ],
-        "server": [
-          "bash ./bin/provision.sh"
+            "echo '<?php if ( ! defined( \"WP_CLI\" ) or ! WP_CLI ) require_once \"vendor/autoload.php\";' >> www/wp-content/mu-plugins/autoload.php"
         ]
     }
 }
