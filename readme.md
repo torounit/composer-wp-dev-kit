@@ -1,4 +1,4 @@
-#Composer WP Environment.
+#Composer WordPress Development Kit.
 
 WordPress Environment for PHP Built-in Server.
 
