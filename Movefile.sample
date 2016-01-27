@@ -4,6 +4,7 @@ local:
 
   paths: # you can customize wordpress internal paths
     wp_content: "../wp-content"
+    mu_plugins: "../wp-content/mu-plugins"
     uploads: "../wp-content/uploads"
     plugins: "../wp-content/plugins"
     themes: "../wp-content/themes"
