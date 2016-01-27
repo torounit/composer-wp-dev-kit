@@ -37,7 +37,7 @@ else
 fi
 
 ## Start Server if installed.
-if ! $($WP_CLI core is-installed) || ! $($WP_CLI core is-installed); then
+if ! $($WP_CLI core is-installed); then
 
     ## Recreate DB for WordPress.
     if [ $DB_PASS ]; then
