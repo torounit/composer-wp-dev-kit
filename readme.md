@@ -25,10 +25,10 @@ $ composer create-project torounit/composer-wp path/to/project
 ```
 $ cd path/to/project
 $ atom config.json
-$ composer server
+$ ./bin/provision.sh
 ```
 
-`composer server` create database and install WordPress if is not installed.
+`./bin/provision.sh` create database and install WordPress if is not installed.
 If installed, Start Server Only.
 
 ## Directory & Files.
