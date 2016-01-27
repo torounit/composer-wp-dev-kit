@@ -37,6 +37,9 @@
         "pre-package-install": [
             "echo '<?php ' > salt.php",
             "curl https://api.wordpress.org/secret-key/1.1/salt/ >> salt.php"
+        ],
+        "server": [
+          "bash ./bin/bootstrap.sh"
         ]
     }
 }

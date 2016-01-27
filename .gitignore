@@ -2,3 +2,4 @@ vendor
 www
 Movefile
 salt.php
+composer.lock
