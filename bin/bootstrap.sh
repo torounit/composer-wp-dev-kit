@@ -4,28 +4,32 @@ set -ex;
 
 mysql.server start
 
+WP_CLI="www/wp-content/mu-plugins/vendor/wp-cli/wp-cli/bin/wp";
+
 ## Get config.
-DOC_ROOT=$(pwd)/www
-WP_PATH=$(pwd)/www
+ROOT=$(cd $(dirname $0);cd ../;pwd)
+DOC_ROOT=$ROOT/www
+WP_PATH=$DOC_ROOT/wp
+CONFIG_PATH=$ROOT/config.json
 
-if [ -f "$(pwd)/config.json" ]; then
-    DB_USER=$(cat $(pwd)/config.json | jq -r ".mysql.username")
-    DB_PASS=$(cat $(pwd)/config.json | jq -r ".mysql.password")
-    DB_NAME=$(cat $(pwd)/config.json | jq -r ".mysql.database")
-    DB_HOST=$(cat $(pwd)/config.json | jq -r ".mysql.host")
-    PORT=$(cat $(pwd)/config.json | jq -r ".server.port")
+if [ -f "$CONFIG_PATH" ]; then
+    DB_USER=$(cat $CONFIG_PATH | jq -r ".mysql.username")
+    DB_PASS=$(cat $CONFIG_PATH | jq -r ".mysql.password")
+    DB_NAME=$(cat $CONFIG_PATH | jq -r ".mysql.database")
+    DB_HOST=$(cat $CONFIG_PATH | jq -r ".mysql.host")
+    PORT=$(cat $CONFIG_PATH | jq -r ".server.port")
 
-    WP_TITLE=$(cat $(pwd)/config.json | jq -r ".wp.title")
-    WP_DESCRIPTION=$(cat $(pwd)/config.json | jq -r ".wp.description")
-    WP_LANG=$(cat $(pwd)/config.json | jq -r ".wp.lang")
-    WP_TIMEZONE_STRING=$(cat $(pwd)/config.json | jq -r ".wp.timezone_string")
-    WP_REWRITE_STRUCTURE=$(cat $(pwd)/config.json | jq -r ".wp.rewrute_structure")
+    WP_TITLE=$(cat $CONFIG_PATH | jq -r ".wp.title")
+    WP_DESCRIPTION=$(cat $CONFIG_PATH | jq -r ".wp.description")
+    WP_LANG=$(cat $CONFIG_PATH | jq -r ".wp.lang")
+    WP_TIMEZONE_STRING=$(cat $CONFIG_PATH | jq -r ".wp.timezone_string")
+    WP_REWRITE_STRUCTURE=$(cat $CONFIG_PATH | jq -r ".wp.rewrute_structure")
 
-    WP_ADMIN_USER=$(cat $(pwd)/config.json | jq -r ".wp.admin.user")
-    WP_ADMIN_PASSWORD=$(cat $(pwd)/config.json | jq -r ".wp.admin.password")
-    WP_ADMIN_EMAIL=$(cat $(pwd)/config.json | jq -r ".wp.admin.email")
+    WP_ADMIN_USER=$(cat $CONFIG_PATH | jq -r ".wp.admin.user")
+    WP_ADMIN_PASSWORD=$(cat $CONFIG_PATH | jq -r ".wp.admin.password")
+    WP_ADMIN_EMAIL=$(cat $CONFIG_PATH | jq -r ".wp.admin.email")
 
-    WP_THEME=$(cat $(pwd)/config.json | jq -r ".wp.theme")
+    WP_THEME=$(cat $CONFIG_PATH | jq -r ".wp.theme")
 
 else
     echo "config.json is NOT a file."
@@ -33,9 +37,9 @@ else
 fi
 
 ## Start Server if installed.
-if ! $(vendor/wp-cli/wp-cli/bin/wp core is-installed); then
+if ! $($WP_CLI core is-installed) || ! $($WP_CLI core is-installed); then
 
-    ## Install WordPress.
+    ## DB WordPress.
     if [ $DB_PASS ]; then
         echo "DROP DATABASE IF EXISTS $DB_NAME;" | mysql -u$DB_USER -p$DB_PASS
         echo "CREATE DATABASE $DB_NAME DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;" | mysql -u$DB_USER -p$DB_PASS
@@ -44,37 +48,39 @@ if ! $(vendor/wp-cli/wp-cli/bin/wp core is-installed); then
         echo "CREATE DATABASE $DB_NAME DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;" | mysql -u$DB_USER
     fi
 
-    vendor/wp-cli/wp-cli/bin/wp core install \
+    ## Create WordPress.
+    $WP_CLI core install \
     --url=http://127.0.0.1:$PORT \
+    --path=www/wp \
     --title="$WP_TITLE" \
     --admin_user="$WP_ADMIN_USER" \
     --admin_password="$WP_ADMIN_PASSWORD" \
     --admin_email="$WP_ADMIN_EMAIL"
 
-    vendor/wp-cli/wp-cli/bin/wp option update blogname "$WP_TITLE"
+    $WP_CLI option update blogname "$WP_TITLE"
 
     if [ $WP_DESCRIPTION ]; then
-        vendor/wp-cli/wp-cli/bin/wp option update blogdescription "$WP_DESCRIPTION"
+        $WP_CLI option update blogdescription "$WP_DESCRIPTION"
     fi
 
     if [ $WP_TIMEZONE_STRING ]; then
-        vendor/wp-cli/wp-cli/bin/wp option update timezone_string "$WP_TIMEZONE_STRING"
+        $WP_CLI option update timezone_string "$WP_TIMEZONE_STRING"
     fi
 
     if [ $WP_LANG ]; then
-        vendor/wp-cli/wp-cli/bin/wp core language install $WP_LANG
-        vendor/wp-cli/wp-cli/bin/wp core language activate $WP_LANG
+        $WP_CLI core language install $WP_LANG
+        $WP_CLI core language activate $WP_LANG
     fi
 
     if [ $WP_REWRITE_STRUCTURE ]; then
-        vendor/wp-cli/wp-cli/bin/wp rewrite structure "$WP_REWRITE_STRUCTURE"
+        $WP_CLI rewrite structure "$WP_REWRITE_STRUCTURE"
     fi
 
     if [ $WP_THEME ]; then
-        vendor/wp-cli/wp-cli/bin/wp theme activate "$WP_THEME"
+        $WP_CLI theme activate "$WP_THEME"
     fi
 
-    vendor/wp-cli/wp-cli/bin/wp plugin activate --all
+    wp plugin activate --all
 
     if [ -e "provision-post.sh" ]; then
         bash provision-post.sh
@@ -84,4 +90,4 @@ fi
 
 ## Open Built-in Server
 open http://127.0.0.1:$PORT
-vendor/wp-cli/wp-cli/bin/wp server --host=0.0.0.0 --port=$PORT --docroot=$DOC_ROOT
+$WP_CLI server --host=0.0.0.0 --port=$PORT --docroot=$DOC_ROOT

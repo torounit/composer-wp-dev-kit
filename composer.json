@@ -9,8 +9,7 @@
     "require": {
         "php": ">=5.5.9",
         "wp-cli/wp-cli" : "~0.21",
-        "psy/psysh" : "~0.6",
-        "johnpbloch/wordpress": "4.4",
+        "johnpbloch/wordpress": "4.4.1",
         "wpackagist-theme/habakiri": "*",
         "wpackagist-plugin/jetpack": "*",
         "wpackagist-plugin/hello-kushimoto": "*",
@@ -24,19 +23,20 @@
             "email": "mail@torounit.com"
         }
     ],
+    "config": {
+        "vendor-dir": "www/wp-content/mu-plugins/vendor"
+    },
     "extra": {
-        "wordpress-install-dir": "www",
+        "wordpress-install-dir": "www/wp",
         "installer-paths": {
             "www/wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
             "www/wp-content/themes/{$name}/": ["type:wordpress-theme"]
         }
     },
-    "config": {
-    },
     "scripts": {
-        "pre-package-install": [
-            "echo '<?php ' > salt.php",
-            "curl https://api.wordpress.org/secret-key/1.1/salt/ >> salt.php"
+        "pre-install-cmd": [
+            "echo '<?php ' > www/salt.php",
+            "curl https://api.wordpress.org/secret-key/1.1/salt/ >> www/salt.php"
         ],
         "server": [
           "bash ./bin/bootstrap.sh"

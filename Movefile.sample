@@ -1,6 +1,14 @@
 local:
   vhost: "http://127.0.0.1:8080"
-  wordpress_path: "./www"
+  wordpress_path: "./www/wp"
+
+  paths: # you can customize wordpress internal paths
+    wp_content: "../wp-content"
+    uploads: "../wp-content/uploads"
+    plugins: "../wp-content/plugins"
+    themes: "../wp-content/themes"
+    languages: "../wp-content/languages"
+    themes: "../wp-content/themes"
 
   database:
     name: "wpdevelopment"
@@ -33,8 +41,6 @@ staging:
 
   ssh:
     host: "example.com"
-    user: "ec2-user"
+    user: "user"
     port: 22 # Port is optional
     rsync_options: "--verbose"
-
-

@@ -1,5 +1,10 @@
 vendor
-www
 Movefile
 salt.php
 composer.lock
+www/wp
+www/wp-content/languages
+www/wp-content/upgrade
+www/wp-content/uploads
+www/wp-content/themes
+www/wp-content/plugins
