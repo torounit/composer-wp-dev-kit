@@ -20,6 +20,8 @@ $ composer create-project torounit/composer-wp path/to/project
 
 ```
 $ cd path/to/project
-$ bin/bootstrap.sh
+$ composer server
 ```
 
+`composer server` create database and install WordPress if is not installed.
+If installed, Start Server Only.

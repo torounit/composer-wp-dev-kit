@@ -11,7 +11,9 @@
   "wp": {
     "title": "Welcome to the Composer",
     "description": "Hello World!",
+    "timezone_string": "UTC+9",
     "lang": "ja",
+    "rewrute_structure": "/archives/%post_id%",
     "admin": {
       "user": "admin",
       "password": "admin",
