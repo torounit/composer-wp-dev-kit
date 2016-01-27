@@ -11,6 +11,11 @@
   "wp": {
     "title": "Welcome to the Composer",
     "description": "Hello World!",
-    "lang": "ja"
+    "lang": "ja",
+    "admin": {
+      "user": "admin",
+      "password": "admin",
+      "email": "admin@example.com"
+    }
   }
 }
