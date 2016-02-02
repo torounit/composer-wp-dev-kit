@@ -1,22 +1,9 @@
 {
-    "name": "torounit/composer-wp",
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "http://wpackagist.org"
-        }
-    ],
-    "require": {
-        "php": ">=5.5.9",
-        "wp-cli/wp-cli" : "~0.21",
-        "johnpbloch/wordpress": "~4.4",
-        "wpackagist-theme/habakiri": "*",
-        "wpackagist-plugin/jetpack": "*",
-        "wpackagist-plugin/hello-kushimoto": "*",
-        "wpackagist-plugin/simple-post-type-permalinks": "*",
-        "wpackagist-plugin/built-in-server-helper": "*"
+    "name": "torounit/composer-wp-dev-kit",
+    "support": {
+        "issues": "https://github.com/torounit/composer-wp-dev-kit/issues",
+        "source": "https://github.com/torounit/composer-wp-dev-kit"
     },
-
     "license": "GPL-2.0+",
     "authors": [
         {
@@ -24,6 +11,22 @@
             "email": "mail@torounit.com"
         }
     ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "http://wpackagist.org"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.2",
+        "wp-cli/wp-cli" : "~0.21",
+        "johnpbloch/wordpress": "*",
+        "wpackagist-theme/habakiri": "*",
+        "wpackagist-plugin/jetpack": "*",
+        "wpackagist-plugin/hello-kushimoto": "*",
+        "wpackagist-plugin/simple-post-type-permalinks": "*",
+        "wpackagist-plugin/built-in-server-helper": "*"
+    },
     "config": {
         "vendor-dir": "www/wp-content/mu-plugins/vendor"
     },
