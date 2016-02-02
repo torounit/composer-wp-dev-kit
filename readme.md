@@ -17,7 +17,7 @@ $ brew install mysql jq composer
 ### 2. Create Project
 
 ```
-$ composer create-project torounit/composer-wp path/to/project
+$ composer create-project torounit/composer-wp-dev-kit path/to/project
 ```
 
 ### 3. Start Development!
