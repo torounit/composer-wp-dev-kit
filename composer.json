@@ -9,11 +9,12 @@
     "require": {
         "php": ">=5.5.9",
         "wp-cli/wp-cli" : "~0.21",
-        "johnpbloch/wordpress": "4.4.1",
+        "johnpbloch/wordpress": "~4.4",
         "wpackagist-theme/habakiri": "*",
         "wpackagist-plugin/jetpack": "*",
         "wpackagist-plugin/hello-kushimoto": "*",
-        "wpackagist-plugin/simple-post-type-permalinks": "*"
+        "wpackagist-plugin/simple-post-type-permalinks": "*",
+        "wpackagist-plugin/built-in-server-helper": "*"
     },
 
     "license": "GPL-2.0+",
