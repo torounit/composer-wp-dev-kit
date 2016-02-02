@@ -23,6 +23,7 @@
         "johnpbloch/wordpress": "*",
         "wpackagist-theme/habakiri": "*",
         "wpackagist-plugin/jetpack": "*",
+        "wpackagist-plugin/wp-api": "*",
         "wpackagist-plugin/hello-kushimoto": "*",
         "wpackagist-plugin/simple-post-type-permalinks": "*",
         "wpackagist-plugin/built-in-server-helper": "*"
