@@ -34,6 +34,7 @@ If installed, Start Server Only.
 ## Directory & Files.
 
 + `www` Document root.
++ `www/wp` WordPress core files.
 + `www/wp-content` Custom wp-content.
 + `www/wp-content/mu-plugins/vendor` for composer library.
 + `config.json` setting your environment.
