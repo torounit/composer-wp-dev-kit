@@ -29,7 +29,8 @@
         "wpackagist-plugin/built-in-server-helper": "*"
     },
     "config": {
-        "vendor-dir": "www/wp-content/mu-plugins/vendor"
+        "vendor-dir": "www/wp-content/mu-plugins/vendor",
+        "secure-http": false
     },
     "extra": {
         "wordpress-install-dir": "www/wp",
