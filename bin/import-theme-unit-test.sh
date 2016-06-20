@@ -18,6 +18,6 @@ else
 fi
 
 $WP_CLI plugin activate wordpress-importer
-curl https://raw.githubusercontent.com/jawordpressorg/theme-test-data-ja/master/wordpress-theme-test-date-ja.xml > theme-unit-test-data.xml
+curl $THEME_UNIT_TEST_URI > theme-unit-test-data.xml
 $WP_CLI wxr-importer import theme-unit-test-data.xml
 rm theme-unit-test-data.xml
