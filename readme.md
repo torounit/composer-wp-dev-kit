@@ -20,17 +20,12 @@ $ brew install mysql jq composer
 $ composer create-project torounit/composer-wp-dev-kit path/to/project
 ```
 
-### 3. Create config.json
 
-```
-$ cp config-sample.json local-config.json
-```
-
-### 4. Start Development!
+### 3. Start Development!
 
 ```
 $ cd path/to/project
-$ atom config.json
+$ atom local-config.json
 $ ./bin/provision.sh
 ```
 
