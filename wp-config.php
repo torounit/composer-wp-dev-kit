@@ -1,8 +1,9 @@
 <?php
 
 if ( file_exists( dirname( __FILE__ ) . '/config.php' ) ) {
-	require "config.php";
-} elseif ( file_exists( dirname( __FILE__ ) . '/local-config.json' ) ) {
+	require dirname( __FILE__ ) ."/config.php";
+}
+elseif ( file_exists( dirname( __FILE__ ) . '/local-config.json' ) ) {
 
 	$env_config = json_decode( file_get_contents( dirname( __FILE__ ) . '/local-config.json' ), true );
 	$db_data    = $env_config['mysql'];
