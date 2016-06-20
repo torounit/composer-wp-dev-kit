@@ -24,6 +24,10 @@ elseif ( file_exists( dirname( __FILE__ ) . '/local-config.json' ) ) {
 	define( 'DB_COLLATE', '' );
 
 	define( 'WP_HOME', 'http://127.0.0.1:' . $env_config['server']['port'] );
+
+	define( 'JETPACK_DEV_DEBUG', true );
+	define( 'WP_DEBUG', true );
+	
 } else {
 	die( "local-config.json or config.php is Not Exsist!" );
 }
@@ -37,8 +41,7 @@ define( 'WP_SITEURL', WP_HOME . '/wp' );
 define( 'WP_CONTENT_DIR', dirname( __FILE__ ) . '/wp-content' );
 define( 'WP_CONTENT_URL', WP_HOME . '/wp-content' );
 
-define( 'JETPACK_DEV_DEBUG', true );
-define( 'WP_DEBUG', true );
+
 
 
 /* That's all, stop editing! Happy blogging. */

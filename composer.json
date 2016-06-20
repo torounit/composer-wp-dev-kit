@@ -15,6 +15,10 @@
         {
             "type": "composer",
             "url": "http://wpackagist.org"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/humanmade/WordPress-Importer"
         }
     ],
     "require": {
@@ -25,7 +29,10 @@
         "wpackagist-plugin/wp-api": "*",
         "wpackagist-plugin/built-in-server-helper": "*",
         "automattic/jetpack": "^4.0",
-        "torounit/hello-kushimoto": "^2.9"
+        "torounit/hello-kushimoto": "^2.9",
+        "wpackagist-plugin/wordpress-importer": "^0.6.2",
+        "humanmade/wordpress-importer": "dev-master"
+
     },
     "config": {
         "vendor-dir": "wp-content/mu-plugins/vendor",
@@ -41,6 +48,10 @@
     "scripts": {
         "start": "./bin/provision.sh",
         "create-production-config": "cp config-sample.php config.php",
+        "import-theme-unit-test": [
+            "wp plugin activate wordpress-importer",
+            "wp wxr-importer import import-file.xml"
+        ],
         "pre-install-cmd": [
             "cp local-config-sample.json local-config.json",
             "echo '<?php ' > salt.php",
