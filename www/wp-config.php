@@ -1,7 +1,7 @@
 <?php
 
 if ( ! file_exists( dirname( __FILE__ ) . '/../config.json' ) ) {
-	wp_die( "Config.json is Not Exsist!" );
+	die( "Config.json is Not Exsist!" );
 }
 
 $env_config = json_decode( file_get_contents( dirname( __FILE__ ) . '/../config.json' ), true );
