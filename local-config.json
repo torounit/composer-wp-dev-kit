@@ -1,0 +1,25 @@
+{
+  "server": {
+    "port": "8080"
+  },
+  "mysql": {
+    "database": "composerwordpress",
+    "username": "root",
+    "password": "",
+    "host": "localhost"
+  },
+  "table_prefix": "wp_",
+  "wp": {
+    "title": "Welcome to the Composer",
+    "description": "Hello World!",
+    "gmt_offset": "9",
+    "lang": "ja",
+    "rewrute_structure": "/archives/%post_id%",
+    "theme": "twentysixteen",
+    "admin": {
+      "user": "admin",
+      "password": "admin",
+      "email": "admin@example.com"
+    }
+  }
+}

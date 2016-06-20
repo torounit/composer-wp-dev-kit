@@ -1,10 +1,10 @@
 <?php
 
-if ( ! file_exists( dirname( __FILE__ ) . '/config.json' ) ) {
-	die( "Config.json is Not Exsist!" );
+if ( ! file_exists( dirname( __FILE__ ) . '/local-config.json' ) ) {
+	die( "local-onfig.json is Not Exsist!" );
 }
 
-$env_config = json_decode( file_get_contents( dirname( __FILE__ ) . '/config.json' ), true );
+$env_config = json_decode( file_get_contents( dirname( __FILE__ ) . '/local-config.json' ), true );
 $db_data    = $env_config['mysql'];
 
 /** The name of the database for WordPress */

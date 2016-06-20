@@ -23,7 +23,7 @@ $ composer create-project torounit/composer-wp-dev-kit path/to/project
 ### 3. Create config.json
 
 ```
-$ cp config-sample.json config.json
+$ cp config-sample.json local-config.json
 ```
 
 ### 4. Start Development!
@@ -39,11 +39,11 @@ If installed, Start Server Only.
 
 ## Directory & Files.
 
-+ `www` Document root.
-+ `www/wp` WordPress core files.
-+ `www/wp-content` Custom wp-content.
-+ `www/wp-content/mu-plugins/vendor` for composer library.
-+ `config.json` setting your environment.
++ `.` Document root.
++ `./wp` WordPress core files.
++ `./wp-content` Custom wp-content.
++ `./wp-content/mu-plugins/vendor` for composer library.
++ `local-config.json` setting your environment.
 
 ## For Deploy
 

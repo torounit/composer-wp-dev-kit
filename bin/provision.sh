@@ -10,7 +10,7 @@ WP_CLI="wp-content/mu-plugins/vendor/wp-cli/wp-cli/bin/wp";
 ROOT=$(cd $(dirname $0);cd ../;pwd)
 DOC_ROOT=$ROOT
 WP_PATH=$DOC_ROOT/wp
-CONFIG_PATH=$ROOT/config.json
+CONFIG_PATH=$ROOT/local-config.json
 
 if [ -f "$CONFIG_PATH" ]; then
     DB_USER=$(cat $CONFIG_PATH | jq -r ".mysql.username")
@@ -32,7 +32,7 @@ if [ -f "$CONFIG_PATH" ]; then
     WP_THEME=$(cat $CONFIG_PATH | jq -r ".wp.theme")
 
 else
-    echo "config.json is NOT a file."
+    echo "local-config.json is NOT a file."
     exit 0
 fi
 
