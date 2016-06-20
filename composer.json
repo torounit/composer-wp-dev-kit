@@ -26,11 +26,11 @@
         "wp-cli/wp-cli" : "~0.23",
         "johnpbloch/wordpress": "^4.5",
         "wpackagist-theme/twentysixteen": "*",
-        "wpackagist-plugin/wp-api": "*",
         "wpackagist-plugin/built-in-server-helper": "*",
         "automattic/jetpack": "^4.0",
         "torounit/hello-kushimoto": "^2.9",
-        "humanmade/wordpress-importer": "dev-master"
+        "humanmade/wordpress-importer": "dev-master",
+        "wp-api/wp-api": "2.*@dev"
 
     },
     "config": {
@@ -51,6 +51,8 @@
             "cp local-config-sample.json local-config.json",
             "echo '<?php ' > salt.php",
             "curl https://api.wordpress.org/secret-key/1.1/salt/ >> salt.php"
-        ]
+        ],
+        "post-update-cmd": "./wp-content/mu-plugins/vendor/wp-cli/wp-cli/bin/wp plugin activate --all",
+        "post-install-cmd": "./wp-content/mu-plugins/vendor/wp-cli/wp-cli/bin/wp plugin activate --all"
     }
 }
