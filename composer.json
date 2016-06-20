@@ -40,6 +40,7 @@
     },
     "scripts": {
         "start": "./bin/provision.sh",
+        "create-production-config": "cp config-sample.php config.php",
         "pre-install-cmd": [
             "cp local-config-sample.json local-config.json",
             "echo '<?php ' > salt.php",

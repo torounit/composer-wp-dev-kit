@@ -25,7 +25,7 @@ $ composer create-project torounit/composer-wp-dev-kit path/to/project
 ```
 $ cd path/to/project
 $ vi local-config.json
-$ ./bin/provision.sh
+$ composer start
 ```
 
 `./bin/provision.sh` create database and install WordPress if is not installed.
@@ -36,7 +36,7 @@ If installed, Start Server Only.
 Create and Edit config.php.
 
 ```
-$ cp config-sample.php config.php
+$ composer create-production-config
 $ vi config.php
 ```
 
