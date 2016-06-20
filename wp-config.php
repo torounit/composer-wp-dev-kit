@@ -20,6 +20,9 @@ elseif ( file_exists( dirname( __FILE__ ) . '/local-config.json' ) ) {
 	/** MySQL hostname */
 	define( 'DB_HOST', $db_data['host'] );
 
+	/** Database Charset to use in creating database tables. */
+	define('DB_CHARSET', 'utf8mb4');
+
 	/** The Database Collate type. Don't change this if in doubt. */
 	define( 'DB_COLLATE', '' );
 
@@ -27,7 +30,7 @@ elseif ( file_exists( dirname( __FILE__ ) . '/local-config.json' ) ) {
 
 	define( 'JETPACK_DEV_DEBUG', true );
 	define( 'WP_DEBUG', true );
-	
+
 } else {
 	die( "local-config.json or config.php is Not Exsist!" );
 }

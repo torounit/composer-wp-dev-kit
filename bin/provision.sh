@@ -42,10 +42,10 @@ if ! $($WP_CLI core is-installed); then
     ## Recreate DB for WordPress.
     if [ $DB_PASS ]; then
         echo "DROP DATABASE IF EXISTS $DB_NAME;" | mysql -u$DB_USER -p$DB_PASS
-        echo "CREATE DATABASE $DB_NAME DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;" | mysql -u$DB_USER -p$DB_PASS
+        echo "CREATE DATABASE $DB_NAME DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;" | mysql -u$DB_USER -p$DB_PASS
     else
         echo "DROP DATABASE IF EXISTS $DB_NAME;" | mysql -u$DB_USER
-        echo "CREATE DATABASE $DB_NAME DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;" | mysql -u$DB_USER
+        echo "CREATE DATABASE $DB_NAME DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;" | mysql -u$DB_USER
     fi
 
     ## Install WordPress.
