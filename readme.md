@@ -4,7 +4,7 @@ WordPress Environment for PHP Built-in Server.
 
 ## Getting Started
 
-### 1. Install PHP, MySQL, jq and composer.
+### 1. Install PHP, composer, MySQL and jq.
 
 ##### for OSX
 

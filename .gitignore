@@ -11,3 +11,4 @@ wp-content/themes
 wp-content/plugins
 wp-content/*.sql
 local-config.json
+config.php

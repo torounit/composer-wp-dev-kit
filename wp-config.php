@@ -1,33 +1,46 @@
 <?php
 
-if ( ! file_exists( dirname( __FILE__ ) . '/local-config.json' ) ) {
-	die( "local-onfig.json is Not Exsist!" );
+
+
+if ( file_exists( dirname( __FILE__ ) . '/local-config.json' ) ) {
+
+
+
+	$env_config = json_decode( file_get_contents( dirname( __FILE__ ) . '/local-config.json' ), true );
+	$db_data    = $env_config['mysql'];
+
+	/** The name of the database for WordPress */
+	define( 'DB_NAME', $db_data['database'] );
+
+	/** MySQL database username */
+	define( 'DB_USER', $db_data['username'] );
+
+	/** MySQL database password */
+	define( 'DB_PASSWORD', $db_data['password'] );
+
+	/** MySQL hostname */
+	define( 'DB_HOST', $db_data['host'] );
+
+	/** The Database Collate type. Don't change this if in doubt. */
+	define( 'DB_COLLATE', '' );
+
+	define( 'WP_HOME', 'http://127.0.0.1:'. $env_config['server']['port'] );
+}
+elseif( file_exists( dirname( __FILE__ ) . '/config.php' ) ) {
+	require "config.php";
+}
+else {
+	die( "local-config.json or config.php is Not Exsist!" );
 }
 
-$env_config = json_decode( file_get_contents( dirname( __FILE__ ) . '/local-config.json' ), true );
-$db_data    = $env_config['mysql'];
 
-/** The name of the database for WordPress */
-define( 'DB_NAME', $db_data['database'] );
-
-/** MySQL database username */
-define( 'DB_USER', $db_data['username'] );
-
-/** MySQL database password */
-define( 'DB_PASSWORD', $db_data['password'] );
-
-/** MySQL hostname */
-define( 'DB_HOST', $db_data['host'] );
-
-/** The Database Collate type. Don't change this if in doubt. */
-define( 'DB_COLLATE', '' );
 
 require_once dirname( __FILE__ ) .'/salt.php';
 
-$table_prefix = $env_config['table_prefix'];
+$table_prefix = "wp_";
 
-define( 'WP_HOME', 'http://127.0.0.1:'. $env_config['server']['port'] );
-define( 'WP_SITEURL', 'http://127.0.0.1:'. $env_config['server']['port'] .'/wp' );
+
+define( 'WP_SITEURL', WP_HOME .'/wp' );
 define( 'WP_CONTENT_DIR', dirname( __FILE__ ) . '/wp-content' );
 define( 'WP_CONTENT_URL', WP_HOME. '/wp-content' );
 
