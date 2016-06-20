@@ -20,17 +20,25 @@ $ brew install mysql jq composer
 $ composer create-project torounit/composer-wp-dev-kit path/to/project
 ```
 
-
 ### 3. Start Development!
 
 ```
 $ cd path/to/project
-$ atom local-config.json
+$ vi local-config.json
 $ ./bin/provision.sh
 ```
 
 `./bin/provision.sh` create database and install WordPress if is not installed.
 If installed, Start Server Only.
+
+### 4. For Production.
+
+Create and Edit config.php.
+
+```
+$ cp config-sample.php config.php
+$ vi config.php
+```
 
 ## Directory & Files.
 

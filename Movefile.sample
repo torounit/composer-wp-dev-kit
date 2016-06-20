@@ -38,7 +38,7 @@ staging:
     - "tmp/*"
     - "Gemfile*"
     - "Movefile"
-    - "wp-config.php"
+    - "config.php"
     - "wp-content/*.sql"
 
   ssh:

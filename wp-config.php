@@ -1,10 +1,8 @@
 <?php
 
-
-
-if ( file_exists( dirname( __FILE__ ) . '/local-config.json' ) ) {
-
-
+if ( file_exists( dirname( __FILE__ ) . '/config.php' ) ) {
+	require "config.php";
+} elseif ( file_exists( dirname( __FILE__ ) . '/local-config.json' ) ) {
 
 	$env_config = json_decode( file_get_contents( dirname( __FILE__ ) . '/local-config.json' ), true );
 	$db_data    = $env_config['mysql'];
@@ -24,25 +22,19 @@ if ( file_exists( dirname( __FILE__ ) . '/local-config.json' ) ) {
 	/** The Database Collate type. Don't change this if in doubt. */
 	define( 'DB_COLLATE', '' );
 
-	define( 'WP_HOME', 'http://127.0.0.1:'. $env_config['server']['port'] );
-}
-elseif( file_exists( dirname( __FILE__ ) . '/config.php' ) ) {
-	require "config.php";
-}
-else {
+	define( 'WP_HOME', 'http://127.0.0.1:' . $env_config['server']['port'] );
+} else {
 	die( "local-config.json or config.php is Not Exsist!" );
 }
 
-
-
-require_once dirname( __FILE__ ) .'/salt.php';
+require_once dirname( __FILE__ ) . '/salt.php';
 
 $table_prefix = "wp_";
 
 
-define( 'WP_SITEURL', WP_HOME .'/wp' );
+define( 'WP_SITEURL', WP_HOME . '/wp' );
 define( 'WP_CONTENT_DIR', dirname( __FILE__ ) . '/wp-content' );
-define( 'WP_CONTENT_URL', WP_HOME. '/wp-content' );
+define( 'WP_CONTENT_URL', WP_HOME . '/wp-content' );
 
 define( 'JETPACK_DEV_DEBUG', true );
 define( 'WP_DEBUG', true );
