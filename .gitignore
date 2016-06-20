@@ -1,6 +1,7 @@
 vendor
 Movefile
 salt.php
+config.json
 composer.lock
 www/wp
 www/wp-content/languages
