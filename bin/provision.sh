@@ -4,11 +4,11 @@ set -ex;
 
 mysql.server start
 
-WP_CLI="www/wp-content/mu-plugins/vendor/wp-cli/wp-cli/bin/wp";
+WP_CLI="wp-content/mu-plugins/vendor/wp-cli/wp-cli/bin/wp";
 
 ## Get config.
 ROOT=$(cd $(dirname $0);cd ../;pwd)
-DOC_ROOT=$ROOT/www
+DOC_ROOT=$ROOT
 WP_PATH=$DOC_ROOT/wp
 CONFIG_PATH=$ROOT/config.json
 
@@ -51,7 +51,7 @@ if ! $($WP_CLI core is-installed); then
     ## Install WordPress.
     $WP_CLI core install \
     --url=http://127.0.0.1:$PORT \
-    --path=www/wp \
+    --path=wp \
     --title="$WP_TITLE" \
     --admin_user="$WP_ADMIN_USER" \
     --admin_password="$WP_ADMIN_PASSWORD" \

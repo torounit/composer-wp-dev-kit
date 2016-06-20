@@ -21,31 +21,27 @@
         "php": ">=5.4.2",
         "wp-cli/wp-cli" : "~0.21",
         "johnpbloch/wordpress": "*",
-        "wpackagist-theme/habakiri": "*",
+        "wpackagist-theme/twentysixteen": "*",
         "wpackagist-plugin/jetpack": "*",
         "wpackagist-plugin/wp-api": "*",
         "wpackagist-plugin/hello-kushimoto": "*",
         "wpackagist-plugin/built-in-server-helper": "*"
     },
     "config": {
-        "vendor-dir": "www/wp-content/mu-plugins/vendor",
+        "vendor-dir": "wp-content/mu-plugins/vendor",
         "secure-http": false
     },
     "extra": {
-        "wordpress-install-dir": "www/wp",
+        "wordpress-install-dir": "wp",
         "installer-paths": {
-            "www/wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
-            "www/wp-content/themes/{$name}/": ["type:wordpress-theme"]
+            "wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
+            "wp-content/themes/{$name}/": ["type:wordpress-theme"]
         }
     },
     "scripts": {
         "pre-install-cmd": [
-            "echo '<?php ' > www/salt.php",
-            "curl https://api.wordpress.org/secret-key/1.1/salt/ >> www/salt.php"
-        ],
-
-        "post-install-cmd": [
-            "echo '<?php if ( ! defined( \"WP_CLI\" ) or ! WP_CLI ) require_once \"vendor/autoload.php\";' >> www/wp-content/mu-plugins/autoload.php"
+            "echo '<?php ' > salt.php",
+            "curl https://api.wordpress.org/secret-key/1.1/salt/ >> salt.php"
         ]
     }
 }

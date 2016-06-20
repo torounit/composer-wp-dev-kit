@@ -3,7 +3,7 @@
     "port": "8080"
   },
   "mysql": {
-    "database": "wpdevelopment",
+    "database": "composerwordpress",
     "username": "root",
     "password": "",
     "host": "localhost"

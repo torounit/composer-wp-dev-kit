@@ -12,7 +12,7 @@ local:
     themes: "../wp-content/themes"
 
   database:
-    name: "wpdevelopment"
+    name: "composerwordpress"
     user: "root"
     password: ""
     host: "localhost"
@@ -29,6 +29,7 @@ staging:
     charset: "utf8"
 
   exclude:
+    - "autoload.php"
     - ".git/"
     - ".gitignore"
     - ".sass-cache/"

@@ -3,10 +3,10 @@ Movefile
 salt.php
 config.json
 composer.lock
-www/wp
-www/wp-content/languages
-www/wp-content/upgrade
-www/wp-content/uploads
-www/wp-content/themes
-www/wp-content/plugins
-www/wp-content/mu-plugins/autoload.php
+wp
+wp-content/languages
+wp-content/upgrade
+wp-content/uploads
+wp-content/themes
+wp-content/plugins
+wp-content/*.sql
