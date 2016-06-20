@@ -30,7 +30,6 @@
         "wpackagist-plugin/built-in-server-helper": "*",
         "automattic/jetpack": "^4.0",
         "torounit/hello-kushimoto": "^2.9",
-        "wpackagist-plugin/wordpress-importer": "^0.6.2",
         "humanmade/wordpress-importer": "dev-master"
 
     },
@@ -49,8 +48,11 @@
         "start": "./bin/provision.sh",
         "create-production-config": "cp config-sample.php config.php",
         "import-theme-unit-test": [
+
             "wp plugin activate wordpress-importer",
-            "wp wxr-importer import import-file.xml"
+            "curl https://raw.githubusercontent.com/jawordpressorg/theme-test-data-ja/master/wordpress-theme-test-date-ja.xml > theme-unit-test-data.xml",
+            "wp wxr-importer import theme-unit-test-data.xml",
+            "rm theme-unit-test-data.xml"
         ],
         "pre-install-cmd": [
             "cp local-config-sample.json local-config.json",
