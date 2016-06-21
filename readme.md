@@ -4,15 +4,26 @@ WordPress Environment for PHP Built-in Server.
 
 ## Getting Started
 
-### 1. Install PHP, composer, MySQL and jq.
+### 1. Install PHP, composer, mariaDB ( or MySQL ) and jq, cURL.
 
 ##### for OSX
 
-PHP is pre-installed.
+PHP and cURL are pre-installed.
 
 ```
-$ brew install mysql jq composer
+$ brew install composer mariadb jq
 ```
+
+##### for Windows
+
+use [chocolatey](https://chocolatey.org/)
+
+```
+$ choco install php mariadb jq curl
+```
+
+[Composer install for Windows](https://getcomposer.org/doc/00-intro.md#installation-windows)
+
 
 ### 2. Create Project
 
@@ -48,7 +59,7 @@ $ vi config.php
 + `./wp-content/mu-plugins/vendor` for composer library.
 + `local-config.json` setting your environment.
 
-## For Deploy
+## Other
 
-Support [Wordmove](https://github.com/welaika/wordmove) 1.4 (Pre Release).
+* Support [Wordmove](https://github.com/welaika/wordmove).
 
