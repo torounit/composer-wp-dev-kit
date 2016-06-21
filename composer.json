@@ -27,6 +27,7 @@
         "johnpbloch/wordpress": "^4.5",
         "wpackagist-theme/twentysixteen": "*",
         "wpackagist-plugin/built-in-server-helper": "*",
+        "wpackagist-plugin/wp-multibyte-patch": "*",
         "automattic/jetpack": "^4.0",
         "torounit/hello-kushimoto": "^2.9",
         "humanmade/wordpress-importer": "dev-master",
