@@ -14,16 +14,6 @@ PHP and cURL are pre-installed.
 $ brew install composer mariadb jq
 ```
 
-##### for Windows
-
-use [chocolatey](https://chocolatey.org/)
-
-```
-$ choco install php mariadb jq curl
-```
-
-[Composer install for Windows](https://getcomposer.org/doc/00-intro.md#installation-windows)
-
 
 ### 2. Create Project
 
@@ -36,7 +26,8 @@ $ composer create-project torounit/composer-wp-dev-kit path/to/project
 ```
 $ cd path/to/project
 $ vi local-config.json
-$ ./bin/provision.sh
+$ composer provision
+$ ./bin/server.sh
 ```
 
 `./bin/provision.sh` create database and install WordPress if is not installed.

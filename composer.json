@@ -45,6 +45,7 @@
         }
     },
     "scripts": {
+        "provision": "bash ./bin/provision.sh",
         "create-production-config": "cp config-sample.php config.php",
         "import-theme-unit-test": "bash ./bin/import-theme-unit-test.sh",
         "pre-install-cmd": [

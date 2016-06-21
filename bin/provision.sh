@@ -92,6 +92,4 @@ if ! $($WP_CLI core is-installed); then
 
 fi
 
-## Open Built-in Server
-open http://127.0.0.1:$PORT
-$WP_CLI server --host=0.0.0.0 --port=$PORT --docroot=$DOC_ROOT
+#bash server.sh
