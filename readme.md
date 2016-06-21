@@ -50,6 +50,13 @@ $ vi config.php
 + `./wp-content/mu-plugins/vendor` for composer library.
 + `local-config.json` setting your environment.
 
+## Commands
+
+* `composer provision` Provisioning WordPress.
+* `./bin/server.sh` Start `wp server` and open browser.
+* `composer import-theme-unit-test` Import theme unit test data.
+* `composer create-production-config` create config.php
+
 ## Other
 
 * Support [Wordmove](https://github.com/welaika/wordmove).
