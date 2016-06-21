@@ -46,15 +46,16 @@
         }
     },
     "scripts": {
-        "provision": "bash ./bin/provision.sh",
-        "create-production-config": "cp config-sample.php config.php",
-        "import-theme-unit-test": "bash ./bin/import-theme-unit-test.sh",
         "pre-install-cmd": [
             "cp local-config-sample.json local-config.json",
             "echo '<?php ' > salt.php",
             "curl https://api.wordpress.org/secret-key/1.1/salt/ >> salt.php"
         ],
         "post-update-cmd": "./wp-content/mu-plugins/vendor/wp-cli/wp-cli/bin/wp plugin activate --all",
-        "post-install-cmd": "./wp-content/mu-plugins/vendor/wp-cli/wp-cli/bin/wp plugin activate --all"
+        "post-install-cmd": "./wp-content/mu-plugins/vendor/wp-cli/wp-cli/bin/wp plugin activate --all",
+        "provision": "bash ./bin/provision.sh",
+        "wp": "./wp-content/mu-plugins/vendor/wp-cli/wp-cli/bin/wp",
+        "create-production-config": "cp config-sample.php config.php",
+        "import-theme-unit-test": "bash ./bin/import-theme-unit-test.sh"
     }
 }
