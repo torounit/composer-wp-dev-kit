@@ -47,9 +47,8 @@
     },
     "scripts": {
         "pre-install-cmd": [
-            "cp local-config-sample.json local-config.json",
-            "echo '<?php ' > salt.php",
-            "curl https://api.wordpress.org/secret-key/1.1/salt/ >> salt.php"
+            "if [ ! -e local-config.json ]; then cp local-config-sample.json local-config.json; fi",
+            "if [ ! -e salt.php ]; then  echo '<?php ' > salt.php && curl https://api.wordpress.org/secret-key/1.1/salt/ >> salt.php; fi"
         ],
         "post-update-cmd": "./wp-content/mu-plugins/vendor/wp-cli/wp-cli/bin/wp plugin activate --all",
         "post-install-cmd": "./wp-content/mu-plugins/vendor/wp-cli/wp-cli/bin/wp plugin activate --all",
