@@ -51,8 +51,8 @@
             "if [ ! -e salt.php ]; then  echo '<?php ' > salt.php && curl https://api.wordpress.org/secret-key/1.1/salt/ >> salt.php; fi",
             "if [ -e ./bin/pre-install.sh ]; then bash ./bin/pre-install.sh; fi"
         ],
-        "post-update-cmd": "./wp-content/mu-plugins/vendor/wp-cli/wp-cli/bin/wp plugin activate --all",
-        "post-install-cmd": "./wp-content/mu-plugins/vendor/wp-cli/wp-cli/bin/wp plugin activate --all",
+        "post-update-cmd": "bash ./bin/provision.sh ./wp-content/mu-plugins/vendor/wp-cli/wp-cli/bin/wp plugin activate --all",
+        "post-install-cmd": "bash ./bin/provision.sh ./wp-content/mu-plugins/vendor/wp-cli/wp-cli/bin/wp plugin activate --all",
         "provision": "bash ./bin/provision.sh",
         "wp": "./wp-content/mu-plugins/vendor/wp-cli/wp-cli/bin/wp",
         "create-production-config": "cp config-sample.php config.php",
