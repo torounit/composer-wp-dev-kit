@@ -27,7 +27,7 @@ $ composer create-project torounit/composer-wp-dev-kit path/to/project
 $ cd path/to/project
 $ vi local-config.json
 $ composer provision
-$ ./bin/server.sh
+$ bash ./bin/server.sh
 ```
 
 `./bin/provision.sh` create database and install WordPress if is not installed.
