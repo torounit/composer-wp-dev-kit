@@ -46,7 +46,7 @@
         }
     },
     "scripts": {
-        "pre-install-cmd": [
+        "pre-update-cmd:": [
             "if [ ! -e local-config.json ]; then cp local-config-sample.json local-config.json; fi",
             "if [ ! -e salt.php ]; then  echo '<?php ' > salt.php && curl https://api.wordpress.org/secret-key/1.1/salt/ >> salt.php; fi",
             "if [ -e ./bin/pre-install.sh ]; then bash ./bin/pre-install.sh; fi"
