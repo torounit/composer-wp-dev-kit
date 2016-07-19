@@ -34,7 +34,7 @@
         "wp-api/wp-api": "2.*@dev"
     },
     "config": {
-        "vendor-dir": "wp-content/mu-plugins/vendor",
+        "vendor-dir": "wp-content/mu-plugins/vendor"
     },
     "extra": {
         "wordpress-install-dir": "wp",
