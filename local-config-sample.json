@@ -22,5 +22,6 @@
       "password": "admin",
       "email": "admin@example.com"
     }
-  }
+  },
+  "theme_unit_test_uri": "https://wpcom-themes.svn.automattic.com/demo/theme-unit-test-data.xml"
 }
