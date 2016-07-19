@@ -26,6 +26,7 @@ $ composer create-project torounit/composer-wp-dev-kit path/to/project
 ```
 $ cd path/to/project
 $ vi local-config.json
+$ mysql.server start
 $ composer provision
 $ bash ./bin/server.sh
 ```
