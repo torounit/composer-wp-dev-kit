@@ -14,7 +14,7 @@
     "repositories": [
         {
             "type": "composer",
-            "url": "http://wpackagist.org"
+            "url": "https://wpackagist.org"
         },
         {
             "type": "vcs",
@@ -34,8 +34,6 @@
         "wp-api/wp-api": "2.*@dev"
     },
     "config": {
-        "vendor-dir": "wp-content/mu-plugins/vendor",
-        "secure-http": false
     },
     "extra": {
         "wordpress-install-dir": "wp",
