@@ -26,7 +26,7 @@ elseif ( file_exists( dirname( __FILE__ ) . '/local-config.json' ) ) {
 	/** The Database Collate type. Don't change this if in doubt. */
 	define( 'DB_COLLATE', '' );
 
-	define( 'WP_HOME', 'http://127.0.0.1:' . $env_config['server']['port'] );
+	define( 'WP_HOME', 'http://'. $env_config['server']['host'] .':' . $env_config['server']['port'] );
 
 	define( 'JETPACK_DEV_DEBUG', true );
 	define( 'WP_DEBUG', true );

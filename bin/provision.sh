@@ -15,7 +15,9 @@ if [ -f "$CONFIG_PATH" ]; then
     DB_PASS=$(cat $CONFIG_PATH | jq -r ".mysql.password")
     DB_NAME=$(cat $CONFIG_PATH | jq -r ".mysql.database")
     DB_HOST=$(cat $CONFIG_PATH | jq -r ".mysql.host")
+
     PORT=$(cat $CONFIG_PATH | jq -r ".server.port")
+    HOST=$(cat $CONFIG_PATH | jq -r ".server.host")
 
     WP_TITLE=$(cat $CONFIG_PATH | jq -r ".wp.title")
     WP_DESCRIPTION=$(cat $CONFIG_PATH | jq -r ".wp.description")
@@ -53,7 +55,7 @@ if ! $($WP_CLI core is-installed); then
 
     ## Install WordPress.
     $WP_CLI core install \
-    --url=http://127.0.0.1:$PORT \
+    --url=http://$HOST:$PORT \
     --path=wp \
     --title="$WP_TITLE" \
     --admin_user="$WP_ADMIN_USER" \

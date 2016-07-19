@@ -12,6 +12,7 @@ CONFIG_PATH=$ROOT/local-config.json
 
 if [ -f "$CONFIG_PATH" ]; then
     PORT=$(cat $CONFIG_PATH | jq -r ".server.port")
+    HOST=$(cat $CONFIG_PATH | jq -r ".server.host")
 
 else
     echo "local-config.json is NOT a file."
@@ -24,5 +25,5 @@ if !(mysql.server status | fgrep -q SUCCESS); then
 fi
 
 ## Open Built-in Server
-open http://127.0.0.1:$PORT
-$WP_CLI server --host=0.0.0.0 --port=$PORT --docroot=$DOC_ROOT
+open http://$HOST:$PORT
+$WP_CLI server --host=$HOST --port=$PORT --docroot=$DOC_ROOT
