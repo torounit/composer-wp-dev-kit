@@ -32,7 +32,6 @@
         "torounit/hello-kushimoto": "^2.9",
         "humanmade/wordpress-importer": "dev-master",
         "wp-api/wp-api": "2.*@dev"
-
     },
     "config": {
         "vendor-dir": "wp-content/mu-plugins/vendor",

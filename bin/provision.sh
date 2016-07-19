@@ -2,8 +2,6 @@
 
 set -ex;
 
-mysql.server start
-
 WP_CLI="wp-content/mu-plugins/vendor/wp-cli/wp-cli/bin/wp";
 
 ## Get config.
@@ -33,6 +31,11 @@ if [ -f "$CONFIG_PATH" ]; then
 
 else
     echo "local-config.json is NOT a file."
+    exit 0
+fi
+
+if !(mysql.server status | fgrep -q SUCCESS); then
+    echo "MySQL not Started."
     exit 0
 fi
 

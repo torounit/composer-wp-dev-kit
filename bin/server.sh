@@ -2,8 +2,6 @@
 
 set -ex;
 
-mysql.server start
-
 WP_CLI="wp-content/mu-plugins/vendor/wp-cli/wp-cli/bin/wp";
 
 ## Get config.
@@ -20,6 +18,10 @@ else
     exit 0
 fi
 
+if !(mysql.server status | fgrep -q SUCCESS); then
+    echo "MySQL not Started."
+    exit 0
+fi
 
 ## Open Built-in Server
 open http://127.0.0.1:$PORT
