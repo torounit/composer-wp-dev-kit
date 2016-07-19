@@ -25,14 +25,19 @@ $ composer create-project torounit/composer-wp-dev-kit path/to/project
 
 ```
 $ cd path/to/project
+$ cpmposer create-local-config
 $ vi local-config.json
 $ mysql.server start
 $ composer provision
-$ bash ./bin/server.sh
 ```
 
 `./bin/provision.sh` create database and install WordPress if is not installed.
-If installed, Start Server Only.
+
+#### Start WordPress!
+
+```
+$ bash ./bin/server.sh
+```
 
 ### 4. For Production.
 
@@ -56,9 +61,7 @@ $ vi config.php
 * `composer provision` Provisioning WordPress.
 * `./bin/server.sh` Start `wp server` and open browser.
 * `composer import-theme-unit-test` Import theme unit test data.
+* `composer create-local-config` create local-config.json
 * `composer create-production-config` create config.php
 
-## Other
-
-* Support [Wordmove](https://github.com/welaika/wordmove).
 
