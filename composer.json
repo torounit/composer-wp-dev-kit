@@ -23,7 +23,6 @@
     ],
     "require": {
         "php": ">=5.4.2",
-        "wp-cli/wp-cli" : "~0.23",
         "johnpbloch/wordpress": "^4.5",
         "wpackagist-theme/twentysixteen": "*",
         "wpackagist-plugin/built-in-server-helper": "*",

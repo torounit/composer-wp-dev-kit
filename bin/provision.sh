@@ -2,7 +2,20 @@
 
 set -ex;
 
-WP_CLI="wp-content/mu-plugins/vendor/wp-cli/wp-cli/bin/wp";
+if ! which jq; then
+    echo "jq is not installed"
+    exit 0;
+fi
+
+if ! which wp; then
+    echo "WP-CLI is not installed"
+    exit 0;
+fi
+
+if !(mysql.server status | fgrep -q SUCCESS); then
+    echo "MySQL not Started."
+    exit 0
+fi
 
 ## Get config.
 ROOT=$(cd $(dirname $0);cd ../;pwd)
@@ -36,13 +49,9 @@ else
     exit 0
 fi
 
-if !(mysql.server status | fgrep -q SUCCESS); then
-    echo "MySQL not Started."
-    exit 0
-fi
 
 ## Start Server if installed.
-if ! $($WP_CLI core is-installed); then
+if ! $(wp core is-installed); then
 
     ## Recreate DB for WordPress.
     if [ $DB_PASS ]; then
@@ -54,7 +63,7 @@ if ! $($WP_CLI core is-installed); then
     fi
 
     ## Install WordPress.
-    $WP_CLI core install \
+    wp core install \
     --url=http://$HOST:$PORT \
     --path=wp \
     --title="$WP_TITLE" \
@@ -63,32 +72,32 @@ if ! $($WP_CLI core is-installed); then
     --admin_email="$WP_ADMIN_EMAIL"
 
     ## Setup Options.
-    $WP_CLI option update blogname "$WP_TITLE"
+    wp option update blogname "$WP_TITLE"
 
     if [ $WP_DESCRIPTION ]; then
-        $WP_CLI option update blogdescription "$WP_DESCRIPTION"
+        wp option update blogdescription "$WP_DESCRIPTION"
     fi
 
     if [ $WP_GMT_OFFSET ]; then
-        $WP_CLI option update gmt_offset "$WP_GMT_OFFSET"
+        wp option update gmt_offset "$WP_GMT_OFFSET"
     fi
 
     if [ $WP_LANG ]; then
-        $WP_CLI core language install $WP_LANG
-        $WP_CLI core language activate $WP_LANG
+        wp core language install $WP_LANG
+        wp core language activate $WP_LANG
     fi
 
     if [ $WP_REWRITE_STRUCTURE ]; then
-        $WP_CLI rewrite structure "$WP_REWRITE_STRUCTURE"
+        wp rewrite structure "$WP_REWRITE_STRUCTURE"
     fi
 
     # Activate Theme.
     if [ $WP_THEME ]; then
-        $WP_CLI theme activate "$WP_THEME"
+        wp theme activate "$WP_THEME"
     fi
 
     # Activate Plugins.
-    $WP_CLI plugin activate --all
+    wp plugin activate --all
 
     # For Post Script.
     if [ -e "provision-post.sh" ]; then

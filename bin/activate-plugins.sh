@@ -2,7 +2,20 @@
 
 set -ex;
 
-WP_CLI="wp-content/mu-plugins/vendor/wp-cli/wp-cli/bin/wp";
+if ! which jq; then
+    echo "jq is not installed"
+    exit 0;
+fi
+
+if ! which wp; then
+    echo "WP-CLI is not installed"
+    exit 0;
+fi
+
+if !(mysql.server status | fgrep -q SUCCESS); then
+    echo "MySQL not Started."
+    exit 0
+fi
 
 ## Get config.
 ROOT=$(cd $(dirname $0);cd ../;pwd)
@@ -18,11 +31,7 @@ else
     exit 0
 fi
 
-if !(mysql.server status | fgrep -q SUCCESS); then
-    echo "MySQL not Started."
-    exit 0
-fi
 
-if $($WP_CLI core is-installed); then
-    $WP_CLI plugin activate --all
+if $(wp core is-installed); then
+    wp plugin activate --all
 fi

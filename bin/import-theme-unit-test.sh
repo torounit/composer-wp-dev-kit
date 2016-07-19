@@ -2,7 +2,20 @@
 
 set -ex;
 
-WP_CLI="wp-content/mu-plugins/vendor/wp-cli/wp-cli/bin/wp";
+if ! which jq; then
+    echo "jq is not installed"
+    exit 0;
+fi
+
+if ! which wp; then
+    echo "WP-CLI is not installed"
+    exit 0;
+fi
+
+if !(mysql.server status | fgrep -q SUCCESS); then
+    echo "MySQL not Started."
+    exit 0
+fi
 
 ## Get config.
 ROOT=$(cd $(dirname $0);cd ../;pwd)
@@ -17,7 +30,7 @@ else
     exit 0
 fi
 
-$WP_CLI plugin activate wordpress-importer
+wp plugin activate wordpress-importer
 curl $THEME_UNIT_TEST_URI > theme-unit-test-data.xml
-$WP_CLI wxr-importer import theme-unit-test-data.xml
+wp wxr-importer import theme-unit-test-data.xml
 rm theme-unit-test-data.xml

@@ -4,14 +4,14 @@ WordPress Environment for PHP Built-in Server.
 
 ## Getting Started
 
-### 1. Install PHP, composer, mariaDB ( or MySQL ) and jq, cURL.
+### 1. Install PHP, composer, WP-CLI, mariaDB ( or MySQL ) and jq, cURL.
 
 ##### for OSX
 
 PHP and cURL are pre-installed.
 
 ```
-$ brew install composer mariadb jq
+$ brew install composer wp-cli mariadb jq 
 ```
 
 
