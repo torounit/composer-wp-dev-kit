@@ -43,15 +43,17 @@
             "wp-content/themes/{$name}/": ["type:wordpress-theme"]
         }
     },
-    "scripts": {
+"scripts": {
+        "pre-install-cmd": [
+            "if [ ! -e salt.php ]; then  echo '<?php ' > salt.php && curl https://api.wordpress.org/secret-key/1.1/salt/ >> salt.php; fi",
+            "if [ -e ./bin/pre-install.sh ]; then bash ./bin/pre-install.sh; fi"
+        ],
         "pre-update-cmd": [
             "if [ ! -e salt.php ]; then  echo '<?php ' > salt.php && curl https://api.wordpress.org/secret-key/1.1/salt/ >> salt.php; fi",
             "if [ -e ./bin/pre-install.sh ]; then bash ./bin/pre-install.sh; fi"
         ],
-        "post-update-cmd": "bash ./bin/activate-plugins.sh",
         "provision": "bash ./bin/provision.sh",
         "create-local-config": "if [ ! -e local-config.json ]; then cp local-config-sample.json local-config.json; fi",
-        "create-production-config": "cp config-sample.php config.php",
-        "import-theme-unit-test": "bash ./bin/import-theme-unit-test.sh"
+        "create-production-config": "cp config-sample.php config.php"
     }
 }
