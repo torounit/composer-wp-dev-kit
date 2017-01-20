@@ -53,7 +53,7 @@
             "if [ -e ./bin/pre-install.sh ]; then bash ./bin/pre-install.sh; fi"
         ],
         "provision": "bash ./bin/provision.sh",
-        "create-local-config": "if [ ! -e local-config.json ]; then cp local-config-sample.json local-config.json; fi",
-        "create-production-config": "cp config-sample.php config.php"
+        "create-local-config": "bash ./bin/create-local-config.sh",
+        "create-production-config": "bash ./bin/create-production-config.sh"
     }
 }
