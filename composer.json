@@ -23,18 +23,21 @@
     ],
     "require": {
         "php": ">=5.4.2",
-        "johnpbloch/wordpress": "^4.5",
+        "composer/installers": "~1.0.12",
+        "johnpbloch/wordpress": "^4.7",
         "wpackagist-theme/twentysixteen": "*",
+        "wpackagist-theme/twentyseventeen": "*",
         "wpackagist-plugin/built-in-server-helper": "*",
         "wpackagist-plugin/theme-check": "*",
         "wpackagist-plugin/wp-multibyte-patch": "*",
-        "automattic/jetpack": "^4.0",
-        "torounit/hello-kushimoto": "^2.9",
-        "humanmade/wordpress-importer": "dev-master",
-        "wp-api/wp-api": "2.*@dev"
+        "wpackagist-plugin/jetpack": "^4.0",
+        "torounit/hello-kushimoto": "^2.9"
     },
     "config": {
         "vendor-dir": "wp-content/mu-plugins/vendor"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^2.5.1"
     },
     "extra": {
         "wordpress-install-dir": "wp",
@@ -43,7 +46,7 @@
             "wp-content/themes/{$name}/": ["type:wordpress-theme"]
         }
     },
-"scripts": {
+    "scripts": {
         "pre-install-cmd": [
             "if [ ! -e salt.php ]; then  echo '<?php ' > salt.php && curl https://api.wordpress.org/secret-key/1.1/salt/ >> salt.php; fi",
             "if [ -e ./bin/pre-install.sh ]; then bash ./bin/pre-install.sh; fi"
@@ -53,6 +56,7 @@
             "if [ -e ./bin/pre-install.sh ]; then bash ./bin/pre-install.sh; fi"
         ],
         "provision": "bash ./bin/provision.sh",
+        "server": "bash ./bin/server.sh",
         "create-local-config": "bash ./bin/create-local-config.sh",
         "create-production-config": "bash ./bin/create-production-config.sh"
     }

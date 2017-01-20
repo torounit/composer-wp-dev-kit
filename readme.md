@@ -59,7 +59,7 @@ $ vi config.php
 ## Commands
 
 * `composer provision` Provisioning WordPress.
-* `./bin/server.sh` Start `wp server` and open browser.
+* `composer server --timeout=0` Start `wp server` and open browser.
 * `composer import-theme-unit-test` Import theme unit test data.
 * `composer create-local-config` create local-config.json
 * `composer create-production-config` create config.php
