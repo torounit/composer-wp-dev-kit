@@ -12,11 +12,6 @@ if ! which wp; then
     exit 0;
 fi
 
-if !(mysql.server status | fgrep -q SUCCESS); then
-    echo "MySQL not Started."
-    exit 0
-fi
-
 ## Get config.
 ROOT=$(cd $(dirname $0);cd ../;pwd)
 DOC_ROOT=$ROOT
@@ -47,6 +42,16 @@ if [ -f "$CONFIG_PATH" ]; then
 else
     echo "local-config.json is NOT a file."
     exit 0
+fi
+
+MYSQLADMIN_PING="mysqladmin ping -u ${DB_USER}";
+if [ -n "${DB_PASS}" ]; then
+  MYSQLADMIN_PING+=" -p${DB_PASS}"
+fi
+
+if [ ! -e "`which mysqladmin`" ] || [ "`${MYSQLADMIN_PING}`" != "mysqld is alive" ]; then
+  echo "MySQL not started."
+  exit 0
 fi
 
 
