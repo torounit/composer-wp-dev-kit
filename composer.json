@@ -58,6 +58,7 @@
         "provision": "bash ./bin/provision.sh",
         "server": "bash ./bin/server.sh",
         "create-local-config": "bash ./bin/create-local-config.sh",
-        "create-production-config": "bash ./bin/create-production-config.sh"
+        "create-production-config": "bash ./bin/create-production-config.sh",
+        "import-theme-unit-test": "bash ./bin/import-theme-unit-test.sh"
     }
 }
