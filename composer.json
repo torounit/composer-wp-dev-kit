@@ -31,7 +31,8 @@
         "wpackagist-plugin/theme-check": "*",
         "wpackagist-plugin/wp-multibyte-patch": "*",
         "wpackagist-plugin/jetpack": "^4.0",
-        "torounit/hello-kushimoto": "^2.9"
+        "torounit/hello-kushimoto": "^2.9",
+        "humanmade/WordPress-Importer": "dev-master"
     },
     "config": {
         "vendor-dir": "wp-content/mu-plugins/vendor"
