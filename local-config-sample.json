@@ -4,7 +4,7 @@
     "port": "8080"
   },
   "mysql": {
-    "database": "composerwordpress",
+    "database": "composer_wp_dev",
     "username": "root",
     "password": "",
     "host": "localhost"
@@ -16,7 +16,7 @@
     "gmt_offset": "9",
     "lang": "ja",
     "rewrute_structure": "/archives/%post_id%",
-    "theme": "twentysixteen",
+    "theme": "vanilla",
     "admin": {
       "user": "admin",
       "password": "admin",

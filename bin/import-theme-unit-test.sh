@@ -39,5 +39,5 @@ fi
 
 wp plugin activate wordpress-importer
 curl $THEME_UNIT_TEST_URI > theme-unit-test-data.xml
-wp wxr-importer import theme-unit-test-data.xml
+wp import theme-unit-test-data.xml --authors=create --quiet
 rm theme-unit-test-data.xml

@@ -15,27 +15,22 @@
         {
             "type": "composer",
             "url": "https://wpackagist.org"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/humanmade/WordPress-Importer"
         }
     ],
     "require": {
         "php": ">=5.4.2",
-        "composer/installers": "~1.0.12",
+        "composer/installers": "^1.0",
         "johnpbloch/wordpress": "^4.7",
-        "wpackagist-theme/twentysixteen": "*",
-        "wpackagist-theme/twentyseventeen": "*",
-        "wpackagist-plugin/built-in-server-helper": "*",
-        "wpackagist-plugin/theme-check": "*",
-        "wpackagist-plugin/wp-multibyte-patch": "*",
-        "wpackagist-plugin/jetpack": "^4.0",
-        "torounit/hello-kushimoto": "^2.9",
-        "humanmade/WordPress-Importer": "dev-master"
+        "wpackagist-theme/vanilla": "^1.6",
+        "wpackagist-theme/twentyseventeen": "^1.0",
+        "wpackagist-plugin/built-in-server-helper": "^1.0",
+        "wpackagist-plugin/theme-check": ">=20160523.1",
+        "wpackagist-plugin/wp-multibyte-patch": "^2.8.1",
+        "wpackagist-plugin/wordpress-importer": "^0.6.3"
     },
     "config": {
-        "vendor-dir": "wp-content/mu-plugins/vendor"
+        "vendor-dir": "wp-content/mu-plugins/vendor",
+        "process-timeout": 0
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^2.5.1"
