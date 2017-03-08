@@ -7,9 +7,10 @@ wp
 wp-content/languages
 wp-content/upgrade
 wp-content/uploads
-wp-content/themes
-#wp-content/themes/twenty*
+#wp-content/themes
+wp-content/themes/twenty*
 wp-content/plugins
 wp-content/*.sql
 local-config.json
 config.php
+wp-content/themes/vanilla

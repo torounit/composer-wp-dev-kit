@@ -1,6 +1,6 @@
 local:
   vhost: "http://127.0.0.1:8080"
-  wordpress_path: "./www/wp"
+  wordpress_path: "./wp"
 
   paths: # you can customize wordpress internal paths
     wp_content: "../wp-content"
@@ -12,7 +12,7 @@ local:
     themes: "../wp-content/themes"
 
   database:
-    name: "composerwordpress"
+    name: "composer_wp_dev"
     user: "root"
     password: ""
     host: "localhost"
