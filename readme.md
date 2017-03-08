@@ -36,7 +36,7 @@ $ composer provision
 #### Start WordPress!
 
 ```
-$ bash ./bin/server.sh
+$ composer server
 ```
 
 ### 4. For Production.
@@ -59,7 +59,7 @@ $ vi config.php
 ## Commands
 
 * `composer provision` Provisioning WordPress.
-* `composer server --timeout=0` Start `wp server` and open browser.
+* `composer server` Start `wp server` and open browser.
 * `composer import-theme-unit-test` Import theme unit test data.
 * `composer create-local-config` create local-config.json
 * `composer create-production-config` create config.php

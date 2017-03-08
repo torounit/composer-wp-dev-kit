@@ -39,7 +39,7 @@ elseif ( file_exists( dirname( __FILE__ ) . '/local-config.json' ) ) {
 	if( ! defined( 'WP_DEBUG' ) ) {
 		define( 'WP_DEBUG', true );
 	}
-	
+
 } else {
 	die( "local-config.json or config.php is Not Exsist!" );
 }
