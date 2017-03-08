@@ -29,8 +29,17 @@ elseif ( file_exists( dirname( __FILE__ ) . '/local-config.json' ) ) {
 	define( 'WP_HOME', 'http://'. $env_config['server']['host'] .':' . $env_config['server']['port'] );
 
 	define( 'JETPACK_DEV_DEBUG', true );
-	define( 'WP_DEBUG', true );
 
+	if ( defined( 'WP_CLI' ) && WP_CLI ) {
+		if ( 'import' == WP_CLI::get_runner()->arguments[0] ) {
+			define( 'WP_DEBUG', false );
+		}
+	}
+
+	if( ! defined( 'WP_DEBUG' ) ) {
+		define( 'WP_DEBUG', true );
+	}
+	
 } else {
 	die( "local-config.json or config.php is Not Exsist!" );
 }
