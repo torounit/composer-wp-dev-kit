@@ -3,7 +3,7 @@ Movefile
 salt.php
 config.json
 composer.lock
-wp
+/wp
 wp-content/languages
 wp-content/upgrade
 wp-content/uploads
@@ -12,5 +12,6 @@ wp-content/themes/twenty*
 wp-content/plugins
 wp-content/*.sql
 local-config.json
+local-config.php
 config.php
 wp-content/themes/vanilla
