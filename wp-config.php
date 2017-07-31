@@ -3,6 +3,9 @@
 if ( file_exists( dirname( __FILE__ ) . '/config.php' ) ) {
 	require dirname( __FILE__ ) ."/config.php";
 }
+elseif ( file_exists( dirname( __FILE__ ) . '/local-config.php' ) ) { // for amimoto
+	require dirname( __FILE__ ) ."/local-config.php";
+}
 elseif ( file_exists( dirname( __FILE__ ) . '/local-config.json' ) ) {
 
 	$env_config = json_decode( file_get_contents( dirname( __FILE__ ) . '/local-config.json' ), true );
@@ -48,7 +51,9 @@ require_once dirname( __FILE__ ) . '/salt.php';
 
 $table_prefix = "wp_";
 
-
+if( !defined( 'WP_HOME') ) {
+	define( 'WP_HOME', $_SERVER['REQUEST_SCHEME'] . '://'. $_SERVER['HTTP_HOST'] );
+}
 define( 'WP_SITEURL', WP_HOME . '/wp' );
 define( 'WP_CONTENT_DIR', dirname( __FILE__ ) . '/wp-content' );
 define( 'WP_CONTENT_URL', WP_HOME . '/wp-content' );
