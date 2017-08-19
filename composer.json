@@ -29,7 +29,6 @@
         "wpackagist-plugin/wordpress-importer": "^0.6.3"
     },
     "config": {
-        "vendor-dir": "wp-content/mu-plugins/vendor",
         "process-timeout": 0
     },
     "require-dev": {
