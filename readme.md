@@ -25,8 +25,8 @@ $ composer create-project torounit/composer-wp-dev-kit path/to/project
 
 ```
 $ cd path/to/project
-$ composer create-local-config
-$ vi local-config.json
+$ composer create-env
+$ vi .env.json
 $ mysql.server start
 $ composer provision
 ```
@@ -54,14 +54,14 @@ $ vi config.php
 + `./wp` WordPress core files.
 + `./wp-content` Custom wp-content.
 + `./wp-content/mu-plugins/vendor` for composer library.
-+ `local-config.json` setting your environment.
++ `.env.json` setting your environment.
 
 ## Commands
 
 * `composer provision` Provisioning WordPress.
 * `composer server` Start `wp server` and open browser.
 * `composer import-theme-unit-test` Import theme unit test data.
-* `composer create-local-config` create local-config.json
+* `composer create-env` create .env.json
 * `composer create-production-config` create config.php
 
 

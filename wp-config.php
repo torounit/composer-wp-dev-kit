@@ -6,9 +6,9 @@ if ( file_exists( dirname( __FILE__ ) . '/config.php' ) ) {
 elseif ( file_exists( dirname( __FILE__ ) . '/local-config.php' ) ) { // for amimoto
 	require dirname( __FILE__ ) ."/local-config.php";
 }
-elseif ( file_exists( dirname( __FILE__ ) . '/local-config.json' ) ) {
+elseif ( file_exists( dirname( __FILE__ ) . '/.env.json' ) ) {
 
-	$env_config = json_decode( file_get_contents( dirname( __FILE__ ) . '/local-config.json' ), true );
+	$env_config = json_decode( file_get_contents( dirname( __FILE__ ) . '/.env.json' ), true );
 	$db_data    = $env_config['mysql'];
 
 	/** The name of the database for WordPress */
@@ -44,7 +44,7 @@ elseif ( file_exists( dirname( __FILE__ ) . '/local-config.json' ) ) {
 	}
 
 } else {
-	die( "local-config.json or config.php is Not Exsist!" );
+	die( ".env.json or config.php is Not Exsist!" );
 }
 
 require_once dirname( __FILE__ ) . '/salt.php';

@@ -2,24 +2,14 @@
 
 set -eu;
 
-if ! which jq; then
-    echo "jq is not installed"
-    exit 0;
-fi
-
-if ! which wp; then
-    echo "WP-CLI is not installed"
-    exit 0;
-fi
-
-WP_CLI=wp
+WP_CLI=$(cd $(dirname $0);cd ../;pwd)/vendor/bin/wp
 JQ=jq
 
 ## Get config.
 ROOT=$(cd $(dirname $0);cd ../;pwd)
 DOC_ROOT=$ROOT
 WP_PATH=$DOC_ROOT/wp
-CONFIG_PATH=$ROOT/local-config.json
+CONFIG_PATH=$ROOT/.env.json
 
 if [ -f "$CONFIG_PATH" ]; then
     DB_USER=$(cat $CONFIG_PATH | $JQ -r ".mysql.username")

@@ -8,6 +8,7 @@ SH_DIR=$(cd $(dirname $0);pwd)
 . $SH_DIR/config.sh
 . $SH_DIR/check-mysql.sh
 
+
 ## Start Server if installed.
 if ! $($WP_CLI core is-installed); then
 
@@ -23,6 +24,7 @@ if ! $($WP_CLI core is-installed); then
     ## Install WordPress.
     $WP_CLI core install \
     --url=http://$HOST:$PORT \
+    --path=wp \
     --title="$WP_TITLE" \
     --admin_user="$WP_ADMIN_USER" \
     --admin_password="$WP_ADMIN_PASSWORD" \
@@ -48,12 +50,17 @@ if ! $($WP_CLI core is-installed); then
         $WP_CLI rewrite structure "$WP_REWRITE_STRUCTURE"
     fi
 
-fi
+    # Activate Theme.
+    if [ $WP_THEME ]; then
+        $WP_CLI theme activate "$WP_THEME"
+    fi
 
-# Activate Theme.
-if [ $WP_THEME ]; then
-	$WP_CLI theme activate "$WP_THEME"
-fi
+    # Activate Plugins.
+    $WP_CLI plugin activate --all
 
-# Activate Plugins.
-$WP_CLI plugin activate --all
+    # For Post Script.
+    if [ -e "provision-post.sh" ]; then
+        bash provision-post.sh
+    fi
+
+fi

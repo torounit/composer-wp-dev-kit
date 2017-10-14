@@ -15,3 +15,4 @@ local-config.json
 local-config.php
 config.php
 wp-content/themes/vanilla
+.env.json
