@@ -1,5 +1,7 @@
 # Composer WordPress Development Kit.
 
+__This project is now archived. It is better to use [@wordpress/env](https://github.com/WordPress/gutenberg/blob/trunk/packages/env/README.md).__
+
 WordPress Environment for PHP Built-in Server.
 
 ## Getting Started
